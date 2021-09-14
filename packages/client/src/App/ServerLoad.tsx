@@ -1,33 +1,40 @@
-import * as React from "react";
+import React, {useEffect, useState} from "react";
 
 import serverOnImage from "../assets/pc-on.gif";
 import serverOffImage from "../assets/pc-off.png";
 
 import styles from "./ServerLoad.module.scss";
 
-const ServerLoad: React.FC = ({serverNumber}) => {
-  const [serverStatus, setServerStatus] = React.useState(true);
-  const [cpuUsage, setCpuUsage] = React.useState("100");
+interface Props {
+  serverNumber: string;
+}
 
-  // Fetch server status on mount
-  React.useEffect(() => {
-    fetch(`http://localhost:8000/status/${serverNumber}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setCpuUsage(`${result.load}`);
-      });
-  }, [serverNumber]);
+const ServerLoad: React.FC<Props> = ({serverNumber}) => {
+  const [serverStatus, setServerStatus] = useState(() => {
+    const localStatus = localStorage.getItem(`server-${serverNumber}-status`) === "true";
 
-  // Fetch server status every 5s
-  React.useEffect(() => {
+    return localStatus || false;
+  });
+  const [cpuUsage, setCpuUsage] = useState("0");
+
+  // Save server status to localstorage
+  useEffect(() => {
+    localStorage.setItem(`server-${serverNumber}-status`, JSON.stringify(serverStatus));
+  }, [serverStatus, serverNumber]);
+
+  // Fetch server data every 5s
+  useEffect(() => {
+    const fetchServerStatus = () => {
+      fetch(`http://localhost:8000/status/${serverNumber}`)
+        .then((res) => res.json())
+        .then((result) => {
+          setCpuUsage(result.load);
+        });
+    };
+
     if (serverStatus) {
-      const intervalId = setInterval(() => {
-        fetch(`http://localhost:8000/status/${serverNumber}`)
-          .then((res) => res.json())
-          .then((result) => {
-            setCpuUsage(`${result.load}`);
-          });
-      }, 5000);
+      fetchServerStatus();
+      const intervalId = setInterval(fetchServerStatus, 5000);
 
       return () => clearInterval(intervalId);
     }
@@ -53,7 +60,7 @@ const ServerLoad: React.FC = ({serverNumber}) => {
         <p className={`status-bar-field ${styles.serverStatus}`}>
           {serverStatus ? "shut down" : "turn on"}
         </p>
-        <p className="status-bar-field">CPU Usage: {serverStatus ? `${cpuUsage}%` : "0%"}</p>
+        <p className="status-bar-field">CPU Usage: {serverStatus ? cpuUsage : "0"}%</p>
       </div>
     </div>
   );
