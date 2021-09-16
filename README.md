@@ -32,3 +32,8 @@ npm start
 
 ## Modalidad de entrega
 * Repositorio público subido a GitHub, Gitlab, Bitbucket.
+
+## Contacto
+* Twitch: Facund0x91
+* Discord: Facund0x91
+* Contacto: https://www.linkedin.com/in/facundo-91/
