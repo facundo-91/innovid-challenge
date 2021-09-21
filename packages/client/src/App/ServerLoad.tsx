@@ -45,19 +45,18 @@ const ServerLoad: React.FC<Props> = ({serverNumber}) => {
       <div className="title-bar">
         <div className="title-bar-text">Server #{serverNumber}</div>
         <div className="title-bar-controls">
-          <button aria-label="Minimize" />
-          <button aria-label="Maximize" />
           <button aria-label="Close" />
         </div>
       </div>
       <div className="window-body">
-        <div className={styles.serverImageContainer} onClick={() => setServerStatus(!serverStatus)}>
-          <img className={styles.serverImage} src={serverStatus ? serverOnImage : serverOffImage} />
-        </div>
+        <img className={styles.serverImage} src={serverStatus ? serverOnImage : serverOffImage} />
       </div>
       <div className="status-bar">
         <p className="status-bar-field">Status: {serverStatus ? "ON" : "OFF"}</p>
-        <p className={`status-bar-field ${styles.serverStatus}`}>
+        <p
+          className={`status-bar-field ${styles.serverStatus}`}
+          onClick={() => setServerStatus(!serverStatus)}
+        >
           {serverStatus ? "shut down" : "turn on"}
         </p>
         <p className="status-bar-field">CPU Usage: {serverStatus ? cpuUsage : "0"}%</p>

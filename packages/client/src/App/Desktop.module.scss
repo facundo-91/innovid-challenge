@@ -1,0 +1,52 @@
+.desktop {
+	display: flex;
+	width: 100%;
+	height: calc(100vh - 28px);
+}
+.desktopIcons {
+	width: 10rem;
+	height: 100%;
+}
+.appContainer {
+	display: flex;
+  flex-direction: column;
+  width: 4.5rem;
+  align-items: center;
+  color: #fff;
+	margin: 2px 2px 24px 2px;
+}
+.appIcon {
+	width: 2rem;
+	height: auto;
+}
+.appName {
+	font-family: "Pixelated MS Sans Serif",Arial;
+  -webkit-font-smoothing: none;
+  font-size: 11px;
+	margin-top: 0.25rem;
+}
+.container {
+	margin: 5rem 0;
+}
+.windowPadding {
+	padding: 4px !important;
+}
+.padding {
+	padding: 2px 2px 2px 3px !important;
+}
+.serverAppIcon {
+	width: 1rem;
+	height: auto;
+	position: absolute;
+}
+.serverAppTitle {
+	margin-left: 1.25rem;
+}
+.appBody {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+  width: 100%;
+	height: fit-content;
+  max-width: 1024px;
+}

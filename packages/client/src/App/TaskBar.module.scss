@@ -1,0 +1,98 @@
+.taskBarContainer {
+	display: flex;
+	width: 100%;
+	box-shadow: inset 0px 1px #dfdfdf, inset 0px 2px #fff;
+	background-color: silver;
+	padding: 4px 2px 2px 2px;
+}
+.startButton {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: unset;
+	min-height: unset;
+	width: 3.375rem;
+	height: 1.375rem;
+	padding: 0 0.25rem;
+}
+.startButton:not(:disabled):active {
+	padding: 0.125rem 0.188rem 0 0.313rem;
+}
+.winIcon {
+	width: 1rem;
+	height: auto;
+	margin: 0 1px;
+}
+.startButtonText {
+	font-weight: bold;
+	text-align: right;
+}
+.separator {
+	border-left: 1px solid grey;
+	border-right: 1px solid #fff;
+	margin: 0 0.125rem;
+}
+.quickLaunch {
+	display: flex;
+	margin-right: 0.25rem;
+}
+.quickLaunchSeparator {
+	box-shadow: inset -1px -1px grey, inset 1px 1px #fff;
+	margin: 0 0.125rem;
+	width: 3px;
+	margin: 2px 0;
+}
+.quickLaunchIcons {
+	margin: 3px 2px 0;
+}
+.desktopIcon,
+.internetIcon,
+.outlookIcon {
+	width: 1rem;
+	height: auto;
+	margin: 0 0.25rem;
+}
+.openApps {
+	display: flex;
+	align-items: center;
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='2' height='2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1 0H0v1h1v1h1V1H1V0z' fill='silver'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 0H1v1H0v1h1V1h1V0z' fill='%23fff'/%3E%3C/svg%3E");
+	box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfe0, inset 2px 2px grey;
+	margin-right: auto;
+	padding: 0 4px;
+	width: 10rem;
+}
+.appIcon {
+	width: 1rem;
+	height: auto;
+}
+.appName {
+	font-family: "Pixelated MS Sans Serif",Arial;
+	font-size: 11px;
+	font-weight: bold;
+	-webkit-font-smoothing: none;
+	color: black;
+	padding-left: 0.25rem;
+}
+.status {
+	display: flex;
+	align-items: center;
+	box-shadow: inset -1px -1px #fff, inset 1px 1px grey;
+  padding: 2px 3px;
+  margin: 0;
+}
+.volumeIcon {
+	width: 1rem;
+	height: auto;
+	margin-right: 0.125rem;
+}
+.hour {
+	font-family: "Pixelated MS Sans Serif",Arial;
+	-webkit-font-smoothing: none;
+	font-size: 11px;
+	letter-spacing: 2px;
+	color: black;
+	padding: 2px 4px 0;
+}
+.hourPeriod {
+	letter-spacing: 0;
+}
